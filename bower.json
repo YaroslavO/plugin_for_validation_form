@@ -1,0 +1,20 @@
+{
+  "name": "validation_form",
+  "version": "0.0.0",
+  "authors": [
+    "Yaroslav Olenenko <jaroslavo@softwareplanet.uk.com>"
+  ],
+  "description": "plugin for validation form using jQuery",
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependency": [
+    "jQuery",
+    "jasmine"
+  ]
+}
