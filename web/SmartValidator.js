@@ -21,9 +21,9 @@
             alert("you click on submit button");
         });
 
-        var mails = FORM.find("[type=email]");
+        var allInputs = FORM.find("input");
 
-        mails.on("keyup", function() {
+        allInputs.on("keyup", function() {
             var mail = $(this);
 
             if (mail.attr('required')) {
