@@ -8,7 +8,7 @@
         FORM, //Глобальный (для плагина) объект формы, на которую он натравлен
     ACCEPTABLE;
 
-    $.fn.smartValidator = function() {
+    $.fn.smartValidator = function(options) {
         ACCEPTABLE=$.extend({	"subselector":"*",
             "classValid":"ACCEPTABLE",
             "classInvalid":"UNACCEPTABLE",
@@ -30,7 +30,7 @@
             "autograb":true,
             "ignore_autograb_change":true,//Игнорировать смену состояний Changed/Unchanged при autograb=true
             "ignore_autograb_action":false//Игнорировать вызов события onAction при autograb=true
-        });
+        }, options);
 
         FORM = this;
 
@@ -40,8 +40,10 @@
 
         inputs.each(function() {
                 input = $(this);
+                input.on("change", function() {
+                    alert("hi there");
+                });
 
-                alert("hi there")
             }
         );
         // complete this code
@@ -61,4 +63,4 @@
         };
     };
 
-}(jQuery));
+})(jQuery);

@@ -4,6 +4,6 @@
 
 (function($){
 
-    $('#form-validation').on("change", $().smartValidator());
+    $('#form-validation').smartValidator();
 
-}(jQuery));
+})(jQuery);
