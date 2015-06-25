@@ -1,66 +1,39 @@
 /**
  * Created by employee on 6/24/15.
  */
-
-
-(function($){
-    var
-        FORM, //Глобальный (для плагина) объект формы, на которую он натравлен
-    ACCEPTABLE;
-
-    $.fn.smartValidator = function(options) {
-        ACCEPTABLE=$.extend({	"subselector":"*",
-            "classValid":"ACCEPTABLE",
-            "classInvalid":"UNACCEPTABLE",
-            "classRequired":"REQUIRED",
-            "classNorequired":"NOREQUIRED",
-            "classEnabled":"ENABLED",
-            "classDisabled":"DISABLED",
-            "classVisible":"VISIBLE",
-            "classHidden":"HIDDEN",
-            "classChanged":"CHANGED",
-            "classUnchanged":"UNCHANGED",
-            "action":"input",
-            "actions":{},
-            "onAction":false,
-            "allowInvalidSubmit":true,
-            "useRequiredAttr":true,
-            "nativeEnabled":true,
-            "nativeVisible":true,
-            "autograb":true,
-            "ignore_autograb_change":true,//Игнорировать смену состояний Changed/Unchanged при autograb=true
-            "ignore_autograb_action":false//Игнорировать вызов события onAction при autograb=true
+(function ($) {
+    $.fn.smartValidator = function (options) {
+        var ACCEPTABLE = $.extend({
+            "selector": "input",
+            "event": "keyup",
+            "rxp_mail": ""
         }, options);
 
-        FORM = this;
-
-        var inputs, input;
-
-        inputs = FORM.find(ACCEPTABLE.subselector);
-
-        inputs.each(function() {
-                input = $(this);
-                input.on("change", function() {
-                    alert("hi there");
-                });
-
-            }
-        );
-        // complete this code
-
-        FORM.on('submit',function(){
-            if (!FORM.isNotRequired()) return (false);
-            if (FORM.isValid()) return (true);
-            return (ACCEPTABLE.allowInvalidSubmit===true);
+        $(this).each(function () {
+            SV($(this), ACCEPTABLE);
         });
-
-        jQuery.fn.isValid = function(){
-            return (this.find("."+ACCEPTABLE.classInvalid).length===0);
-        };
-
-        jQuery.fn.isNotRequired = function(){
-            return (this.find("."+ACCEPTABLE.classRequired).length===0);
-        };
     };
 
-})(jQuery);
+    function SV (FORM, options) {
+        var submit = FORM.find("[type=submit]"); //place for code
+
+        submit.on("click", function() {
+            alert("you click on submit button");
+        });
+
+        var mails = FORM.find("[type=email]");
+
+        mails.on("keyup", function() {
+            var mail = $(this);
+
+            if (mail.attr('required')) {
+               if (mail.val() === '') {
+                   mail.addClass("colorError");
+               } else {
+                   mail.removeClass("colorError");
+               }
+            }
+        })
+    }
+}(jQuery));
+

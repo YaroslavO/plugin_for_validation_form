@@ -3,18 +3,18 @@
 <head lang="en">
     <meta charset="UTF-8">
     <title></title>
-    <script src="../bower_components/jquery/dist/jquery.js"></script>
-    <script src="SmartValidator.js"></script>
-    <script src="init.js">
-    </script>
+    <link href="validation.css" rel="stylesheet"/>
 </head>
 <body>
 <!--off form validation-->
 <form action="#" id="form-validation" method="POST" novalidate>
-    <input type="email" min="4" max="10" required>
-    <input type="password" min="4" max="10" required>
-    <input type="submit">
+    <input type="email" required>
+    <!--<input id="password" class="colorError" required>-->
+    <!--<input type="submit">-->
 </form>
 
+    <script src="../bower_components/jQuery/dist/jquery.js"></script>
+    <script src="init.js"></script>
+    <script src="SmartValidator.js"></script>
 </body>
 </html>
