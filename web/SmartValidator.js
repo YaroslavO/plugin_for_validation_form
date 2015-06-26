@@ -21,8 +21,9 @@
         FORM.on('submit', function () {
             if (!valid) {
                 submit.addClass("error");
+                //return false;
             }
-            return (valid);
+            return valid;
         });
 
         var allInputs = FORM.find("input");
@@ -43,7 +44,7 @@
             if (input.is("[type=email]")) {
                 var value = input.val();
                 var pattern = new RegExp(/^(("[\w-\s]+")|([\w-]+(?:\.[\w-]+)*)|("[\w-\s]+")([\w-]+(?:\.[\w-]+)*))(@((?:[\w-]+\.)*\w[\w-]{0,66})\.([a-z]{2,6}(?:\.[a-z]{2})?)$)|(@\[?((25[0-5]\.|2[0-4][0-9]\.|1[0-9]{2}\.|[0-9]{1,2}\.))((25[0-5]|2[0-4][0-9]|1[0-9]{2}|[0-9]{1,2})\.){2}(25[0-5]|2[0-4][0-9]|1[0-9]{2}|[0-9]{1,2})\]?$)/i);
-                if(pattern.test(value)) {
+                if(!pattern.test(value)) {
                     valid &= false;
                     input.addClass("error");
                 }else {
